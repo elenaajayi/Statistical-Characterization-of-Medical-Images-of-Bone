@@ -30,7 +30,7 @@ The analysis was compared to a parallel study on natural images **(Hermundstad e
 Spatial Frequency Differences: Medical images (both radiographs and scintigrams) have distinct spatial frequency characteristics when compared to natural images.
 Local Correlations:
 Pairwise correlations were less informative in medical images than in natural images.
-Triplet correlations were especially uninformative in bone radiographs, which may be due to a relative lack of T-junctions in these images.
+Triplet correlations were especially uninformative in bone radiographs, which may be due to a relative lack of T-junctions in these images. **Abstract published in the Journal Of Vision**
 
 **Conclusion**
 The statistical properties of medical images differ significantly from those of natural images in both spatial frequency and local image statistics. This study sheds light on how medical images are processed and highlights the need for tailored approaches when applying vision models to medical imaging.
