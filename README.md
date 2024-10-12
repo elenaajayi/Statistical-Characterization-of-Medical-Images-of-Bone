@@ -1,9 +1,5 @@
 # Statistical-Characterization-of-Bone
 
-**Statistical Comparison of Medical and Natural Images**
-This repository contains the code and data for a study that compares the statistical characteristics of medical images and natural images, focusing on the analysis of spatial frequency content and local features. The investigation explores how the formation of medical images differs from natural images and how these differences impact their statistical properties, particularly for radiologists in the diagnostic process.
-
-
 **Overview**
 Visual perception is evolved to process natural images, but medical images are generated through different physical processes, which may result in different statistical characteristics. This project focuses on two types of medical images: bone radiographs and scintigrams.
 
