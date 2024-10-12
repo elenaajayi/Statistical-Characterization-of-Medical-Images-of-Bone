@@ -33,6 +33,6 @@ Pairwise correlations were less informative in medical images than in natural im
 Triplet correlations were especially uninformative in bone radiographs, which may be due to a relative lack of T-junctions in these images. **Abstract published in the Journal Of Vision**
 
 **Conclusion**
-The statistical properties of medical images differ significantly from those of natural images in both spatial frequency and local image statistics. This study sheds light on how medical images are processed and highlights the need for tailored approaches when applying vision models to medical imaging.
+The statistical properties of medical images differ significantly from those of natural images in both spatial frequency and local image statistics. This study sheds light on how medical images are processed and highlights the need for tailored approaches when applying vision models to medical imaging. **Abstract Published in the Journal of Vision.**
 
 
