@@ -8,7 +8,7 @@ Visual perception is evolved to process natural images, but medical images are g
 
 ## Attribution
 
-Most of the analysis code in this repository was written by **Dr. Jonathan Victor** ([github.com/jvlab](https://github.com/jvlab)). My contributions included running and tweaking the analysis scripts, processing and curating the medical images, writing portions of the VSS 2023 poster, and presenting the work at LANS 2022.
+Most of the analysis code in this repository was written by **Dr. Jonathan Victor** ([github.com/jvlab](https://github.com/jvlab)). My contributions included running and tweaking the analysis scripts, processing and curating the medical images, writing portions of the VSS 2023 poster, and presenting the work at LANS 2022 and VSS 2023.
 
 ## Key Analyses
 
