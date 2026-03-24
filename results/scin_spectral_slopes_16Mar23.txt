@@ -1,0 +1,238 @@
+%extract spectral slopes
+pwd
+ans =
+    'C:\Users\jdvicto\Dropbox\BoneStats'
+date
+ans =
+    '16-Mar-2023'
+clear
+close all
+load scin_30jan2023.mat
+ffdm_btc_spec_gen
+Enter lower spatial frequency limit, in cycles per patch, for determination of spectral slope (range: 0.000000 to 8.000000, default= 2.000000):
+Enter upper spatial frequency limit, as fraction of Nyquist, for determination of spectral slope (range: 0.000000 to 1.000000, default= 0.900000):
+Enter confidence limit alpha-value (range: 0.000000 to 1.000000, default= 0.050000):
+Enter 1 to plot spectra (range: 0 to 1, default= 1):0
+Enter 1 to plot spectral params (range: 0 to 1, default= 1):0
+analysis parameters in previously-analyzed datasets:
+  src      label        dataset  nsets       N(uncorr)         R         NR(uncorr)       N(corr)        NR(corr)
+  2    ffdm_unmod      ffdm_unmod   21      1 to   32     16 to  512     16 to  512      1 to   32     16 to  512
+  3    ffdm_mlis       ffdm_mlis    15      1 to   16     16 to  256     16 to  256      2 to   32     32 to  512
+  4    usic            usic         15      1 to   16     16 to  256     16 to  256      1 to   16     16 to  256
+  5    mrix            mrix_adni     6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  5    mrix            mrix_oasis    6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  5    mrix            mrix_hv       6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  5    mrix            mrix_patient  6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  6    nistats         nistats      18      1 to   20     32 to  128     32 to  640      1 to   20     32 to  640
+  7    upmc_imgs       upmc_imgs     6      1 to   32     16 to  512    512 to  512      1 to   32    512 to  512
+  8    upmc_nvms       upmc_nvms     6      1 to   32     16 to  512    512 to  512      1 to   32    512 to  512
+  9    nibs            nibs         15      1 to   16     16 to  256     16 to  256      1 to   16     16 to  256
+available analysis parameters in this dataset
+                                  set        N(uncorr)         R         NR(uncorr)       N(corr)        NR(corr)
+                                   1->          1            128            128              1            128    
+                                   2->          2             64            128              2            128    
+                                   3->          4             32            128              4            128    
+                                   4->          8             16            128              8            128    
+                                   5->          1             64             64              1             64    
+                                   6->          2             32             64              2             64    
+                                   7->          4             16             64              4             64    
+                                   8->          1             32             32              1             32    
+                                   9->          2             16             32              2             32    
+                                  10->          1             16             16              1             16    
+Enter 1 to enter set choices directly, 2 for intersection of analyzed datasets, 3 for union of analyzed datsets (range: 1 to 3):1
+Enter one or more choices of sets (range: 1 to 10):[1:10]
+chosen analysis parameters from this dataset
+                                  set        N(uncorr)         R         NR(uncorr)       N(corr)        NR(corr)
+                                   1->          1            128            128              1            128    
+                                   2->          2             64            128              2            128    
+                                   3->          4             32            128              4            128    
+                                   4->          8             16            128              8            128    
+                                   5->          1             64             64              1             64    
+                                   6->          2             32             64              2             64    
+                                   7->          4             16             64              4             64    
+                                   8->          1             32             32              1             32    
+                                   9->          2             16             32              2             32    
+                                  10->          1             16             16              1             16    
+Enter 1 if ok (range: 0 to 1, default= 1):1
+1->     nrplot (             default view in ffdm_nrplot [az el]=[-30.00  15.00])
+2->     nrline (        view down a line of constant N*R [az el]=[ 40.00  10.00])
+3->    topdown (          top-down view onto (N,R) plane [az el]=[  0.00  90.00])
+4->     matlab (                 matlab standard 3D view [az el]=[-37.50  30.00])
+Enter choice (range: 1 to 4):2
+ N= 1 R=128:     16384 values in FFT,   8127 unique vals at nonzero non-Nyquist freqs, power law fit lims: 0.0156 to 0.4500 cycles/pixel
+   subset           horiz:         56 of        63 values to be used for fitting
+   subset            vert:         56 of        63 values to be used for fitting
+   subset   diag samesign:         39 of        63 values to be used for fitting
+   subset    diag oppsign:         39 of        63 values to be used for fitting
+   subset             all:       5266 of      8127 values to be used for fitting
+ N= 2 R= 64:      4096 values in FFT,   2015 unique vals at nonzero non-Nyquist freqs, power law fit lims: 0.0156 to 0.2250 cycles/pixel
+   subset           horiz:         27 of        31 values to be used for fitting
+   subset            vert:         27 of        31 values to be used for fitting
+   subset   diag samesign:         19 of        31 values to be used for fitting
+   subset    diag oppsign:         19 of        31 values to be used for fitting
+   subset             all:       1323 of      2015 values to be used for fitting
+ N= 4 R= 32:      1024 values in FFT,    495 unique vals at nonzero non-Nyquist freqs, power law fit lims: 0.0156 to 0.1125 cycles/pixel
+   subset           horiz:         13 of        15 values to be used for fitting
+   subset            vert:         13 of        15 values to be used for fitting
+   subset   diag samesign:          9 of        15 values to be used for fitting
+   subset    diag oppsign:          9 of        15 values to be used for fitting
+   subset             all:        337 of       495 values to be used for fitting
+ N= 8 R= 16:       256 values in FFT,    119 unique vals at nonzero non-Nyquist freqs, power law fit lims: 0.0156 to 0.0563 cycles/pixel
+   subset           horiz:          6 of         7 values to be used for fitting
+   subset            vert:          6 of         7 values to be used for fitting
+   subset   diag samesign:          4 of         7 values to be used for fitting
+   subset    diag oppsign:          4 of         7 values to be used for fitting
+   subset             all:         82 of       119 values to be used for fitting
+ N= 1 R= 64:      4096 values in FFT,   2015 unique vals at nonzero non-Nyquist freqs, power law fit lims: 0.0313 to 0.4500 cycles/pixel
+   subset           horiz:         27 of        31 values to be used for fitting
+   subset            vert:         27 of        31 values to be used for fitting
+   subset   diag samesign:         19 of        31 values to be used for fitting
+   subset    diag oppsign:         19 of        31 values to be used for fitting
+   subset             all:       1323 of      2015 values to be used for fitting
+ N= 2 R= 32:      1024 values in FFT,    495 unique vals at nonzero non-Nyquist freqs, power law fit lims: 0.0313 to 0.2250 cycles/pixel
+   subset           horiz:         13 of        15 values to be used for fitting
+   subset            vert:         13 of        15 values to be used for fitting
+   subset   diag samesign:          9 of        15 values to be used for fitting
+   subset    diag oppsign:          9 of        15 values to be used for fitting
+   subset             all:        337 of       495 values to be used for fitting
+ N= 4 R= 16:       256 values in FFT,    119 unique vals at nonzero non-Nyquist freqs, power law fit lims: 0.0313 to 0.1125 cycles/pixel
+   subset           horiz:          6 of         7 values to be used for fitting
+   subset            vert:          6 of         7 values to be used for fitting
+   subset   diag samesign:          4 of         7 values to be used for fitting
+   subset    diag oppsign:          4 of         7 values to be used for fitting
+   subset             all:         82 of       119 values to be used for fitting
+ N= 1 R= 32:      1024 values in FFT,    495 unique vals at nonzero non-Nyquist freqs, power law fit lims: 0.0625 to 0.4500 cycles/pixel
+   subset           horiz:         13 of        15 values to be used for fitting
+   subset            vert:         13 of        15 values to be used for fitting
+   subset   diag samesign:          9 of        15 values to be used for fitting
+   subset    diag oppsign:          9 of        15 values to be used for fitting
+   subset             all:        337 of       495 values to be used for fitting
+ N= 2 R= 16:       256 values in FFT,    119 unique vals at nonzero non-Nyquist freqs, power law fit lims: 0.0625 to 0.2250 cycles/pixel
+   subset           horiz:          6 of         7 values to be used for fitting
+   subset            vert:          6 of         7 values to be used for fitting
+   subset   diag samesign:          4 of         7 values to be used for fitting
+   subset    diag oppsign:          4 of         7 values to be used for fitting
+   subset             all:         82 of       119 values to be used for fitting
+ N= 1 R= 16:       256 values in FFT,    119 unique vals at nonzero non-Nyquist freqs, power law fit lims: 0.1250 to 0.4500 cycles/pixel
+   subset           horiz:          6 of         7 values to be used for fitting
+   subset            vert:          6 of         7 values to be used for fitting
+   subset   diag samesign:          4 of         7 values to be used for fitting
+   subset    diag oppsign:          4 of         7 values to be used for fitting
+   subset             all:         82 of       119 values to be used for fitting
+ 
+power spectra as average per patch
+view std: best fit of power spec = A*(sf)^h
+horiz
+ N= 1 R=128: A 3.012076e-06  [2.589506e-06 3.503604e-06] h -3.563 [-3.643 -3.482]
+ N= 2 R= 64: A 1.536057e-06  [1.121518e-06 2.103821e-06] h -3.765 [-3.894 -3.636]
+ N= 4 R= 32: A 5.234075e-07  [2.097159e-07 1.306317e-06] h -4.071 [-4.379 -3.763]
+ N= 8 R= 16: A 2.74763e-06  [4.787142e-07 1.57703e-05] h -3.562 [-4.067 -3.056]
+ N= 1 R= 64: A 1.046267e-05  [8.352889e-06 1.310534e-05] h -3.620 [-3.746 -3.494]
+ N= 2 R= 32: A 3.876207e-06  [2.318128e-06 6.481512e-06] h -3.953 [-4.177 -3.729]
+ N= 4 R= 16: A 9.568664e-07  [4.326705e-07 2.116145e-06] h -4.392 [-4.679 -4.106]
+ N= 1 R= 32: A 3.744386e-05  [2.542402e-05 5.51464e-05] h -3.650 [-3.887 -3.413]
+ N= 2 R= 16: A 1.003164e-05  [1.996401e-06 5.040765e-05] h -4.157 [-4.930 -3.384]
+ N= 1 R= 16: A 9.478759e-05  [5.523573e-05 0.0001626608] h -4.042 [-4.423 -3.661]
+vert
+ N= 1 R=128: A 4.578205e-06  [3.851355e-06 5.442231e-06] h -3.179 [-3.271 -3.087]
+ N= 2 R= 64: A 3.502237e-06  [2.744817e-06 4.468663e-06] h -3.223 [-3.323 -3.123]
+ N= 4 R= 32: A 1.566119e-06  [8.320347e-07 2.947868e-06] h -3.436 [-3.649 -3.223]
+ N= 8 R= 16: A 4.478115e-07  [3.862029e-08 5.192482e-06] h -3.734 [-4.443 -3.025]
+ N= 1 R= 64: A 1.733454e-05  [1.356477e-05 2.215195e-05] h -3.149 [-3.286 -3.012]
+ N= 2 R= 32: A 1.14624e-05  [7.094307e-06 1.852002e-05] h -3.245 [-3.454 -3.035]
+ N= 4 R= 16: A 1.51222e-06  [8.62613e-07 2.651027e-06] h -3.891 [-4.094 -3.688]
+ N= 1 R= 32: A 4.657309e-05  [3.16786e-05 6.847058e-05] h -3.390 [-3.626 -3.154]
+ N= 2 R= 16: A 2.464974e-05  [7.524427e-06 8.075164e-05] h -3.579 [-4.147 -3.011]
+ N= 1 R= 16: A 0.00013845  [7.734651e-05 0.0002478249] h -3.675 [-4.086 -3.264]
+diag samesign
+ N= 1 R=128: A 3.138983e-06  [2.386324e-06 4.129035e-06] h -3.221 [-3.370 -3.072]
+ N= 2 R= 64: A 1.959235e-06  [1.336346e-06 2.872459e-06] h -3.330 [-3.491 -3.168]
+ N= 4 R= 32: A 4.155715e-07  [2.488854e-07 6.938923e-07] h -3.799 [-3.978 -3.621]
+ N= 8 R= 16: A 1.541107e-07  [6.141817e-08 3.86695e-07] h -4.018 [-4.295 -3.741]
+ N= 1 R= 64: A 1.032414e-05  [6.965606e-06 1.530202e-05] h -3.369 [-3.599 -3.139]
+ N= 2 R= 32: A 6.644396e-06  [3.977527e-06 1.109936e-05] h -3.458 [-3.692 -3.224]
+ N= 4 R= 16: A 6.850879e-07  [5.41019e-07 8.675212e-07] h -4.222 [-4.312 -4.133]
+ N= 1 R= 32: A 3.887935e-05  [1.737396e-05 8.700401e-05] h -3.406 [-3.933 -2.878]
+ N= 2 R= 16: A 3.560433e-05  [3.855487e-06 0.0003287959] h -3.297 [-4.436 -2.159]
+ N= 1 R= 16: A 6.329355e-05  [3.921889e-06 0.001021465] h -4.136 [-6.316 -1.957]
+diag oppsign
+ N= 1 R=128: A 1.983856e-06  [1.547872e-06 2.542642e-06] h -3.601 [-3.736 -3.465]
+ N= 2 R= 64: A 9.919563e-07  [6.471347e-07 1.520514e-06] h -3.802 [-3.983 -3.622]
+ N= 4 R= 32: A 1.250046e-07  [7.676277e-08 2.035642e-07] h -4.447 [-4.617 -4.277]
+ N= 8 R= 16: A 3.761673e-08  [2.348748e-08 6.024566e-08] h -4.738 [-4.880 -4.596]
+ N= 1 R= 64: A 7.041823e-06  [4.399014e-06 1.127236e-05] h -3.819 [-4.094 -3.543]
+ N= 2 R= 32: A 2.184995e-06  [7.034205e-07 6.787126e-06] h -4.230 [-4.747 -3.714]
+ N= 4 R= 16: A 5.308763e-08  [2.816361e-08 1.000687e-07] h -5.544 [-5.785 -5.304]
+ N= 1 R= 32: A 2.239916e-05  [9.806964e-06 5.115982e-05] h -4.108 [-4.649 -3.567]
+ N= 2 R= 16: A 3.314757e-06  [2.567242e-08 0.0004279928] h -4.926 [-7.415 -2.437]
+ N= 1 R= 16: A 6.296777e-05  [1.581036e-05 0.0002507811] h -4.753 [-5.836 -3.670]
+all
+ N= 1 R=128: A 2.428006e-06  [2.367244e-06 2.490327e-06] h -3.474 [-3.493 -3.456]
+ N= 2 R= 64: A 2.241919e-06  [2.10561e-06 2.387052e-06] h -3.358 [-3.388 -3.327]
+ N= 4 R= 32: A 3.989108e-07  [3.114229e-07 5.109768e-07] h -3.920 [-4.011 -3.828]
+ N= 8 R= 16: A 2.786873e-07  [7.982972e-08 9.729032e-07] h -3.955 [-4.331 -3.579]
+ N= 1 R= 64: A 9.385313e-06  [8.957304e-06 9.833774e-06] h -3.518 [-3.552 -3.484]
+ N= 2 R= 32: A 7.189375e-06  [6.310181e-06 8.191067e-06] h -3.480 [-3.545 -3.415]
+ N= 4 R= 16: A 5.795506e-07  [3.15192e-07 1.065633e-06] h -4.358 [-4.589 -4.127]
+ N= 1 R= 32: A 3.042371e-05  [2.792612e-05 3.314467e-05] h -3.655 [-3.718 -3.591]
+ N= 2 R= 16: A 1.674799e-05  [1.226374e-05 2.287191e-05] h -3.770 [-3.929 -3.610]
+ N= 1 R= 16: A 8.484421e-05  [7.353893e-05 9.788748e-05] h -4.025 [-4.138 -3.913]
+ 
+power spectra as average per subj
+view std: best fit of power spec = A*(sf)^h
+horiz
+ N= 1 R=128: A 2.865779e-06  [2.509129e-06 3.273123e-06] h -3.648 [-3.719 -3.577]
+ N= 2 R= 64: A 1.695833e-06  [1.288384e-06 2.232136e-06] h -3.801 [-3.914 -3.688]
+ N= 4 R= 32: A 1.123841e-06  [4.43924e-07 2.845124e-06] h -3.892 [-4.205 -3.580]
+ N= 8 R= 16: A 5.661201e-06  [6.948436e-07 4.612433e-05] h -3.397 [-4.004 -2.790]
+ N= 1 R= 64: A 8.931584e-06  [7.343791e-06 1.086267e-05] h -3.716 [-3.825 -3.606]
+ N= 2 R= 32: A 3.268498e-06  [1.975379e-06 5.408116e-06] h -4.060 [-4.280 -3.841]
+ N= 4 R= 16: A 9.562661e-07  [1.984119e-07 4.608821e-06] h -4.435 [-5.003 -3.868]
+ N= 1 R= 32: A 3.20365e-05  [2.203184e-05 4.658427e-05] h -3.758 [-3.987 -3.528]
+ N= 2 R= 16: A 7.016343e-06  [1.557505e-06 3.160765e-05] h -4.363 [-5.084 -3.643]
+ N= 1 R= 16: A 7.542859e-05  [3.916117e-05 0.0001452835] h -4.185 [-4.647 -3.722]
+vert
+ N= 1 R=128: A 4.018978e-06  [3.377702e-06 4.782004e-06] h -3.279 [-3.372 -3.187]
+ N= 2 R= 64: A 3.019169e-06  [2.214839e-06 4.115597e-06] h -3.332 [-3.459 -3.205]
+ N= 4 R= 32: A 1.605938e-06  [7.465244e-07 3.454724e-06] h -3.486 [-3.744 -3.228]
+ N= 8 R= 16: A 3.958877e-07  [2.35057e-08 6.667619e-06] h -3.825 [-4.642 -3.008]
+ N= 1 R= 64: A 1.640296e-05  [1.328742e-05 2.024901e-05] h -3.161 [-3.279 -3.043]
+ N= 2 R= 32: A 9.865476e-06  [6.483743e-06 1.501102e-05] h -3.298 [-3.481 -3.116]
+ N= 4 R= 16: A 1.31607e-06  [8.920914e-07 1.941549e-06] h -3.939 [-4.080 -3.799]
+ N= 1 R= 32: A 4.011323e-05  [2.789003e-05 5.769342e-05] h -3.479 [-3.701 -3.256]
+ N= 2 R= 16: A 1.258204e-05  [3.43582e-06 4.607569e-05] h -3.909 [-4.530 -3.287]
+ N= 1 R= 16: A 0.0001292062  [7.282947e-05 0.0002292236] h -3.714 [-4.118 -3.309]
+diag samesign
+ N= 1 R=128: A 2.208139e-06  [1.69727e-06 2.872777e-06] h -3.401 [-3.545 -3.258]
+ N= 2 R= 64: A 1.074745e-06  [7.184786e-07 1.607672e-06] h -3.607 [-3.778 -3.437]
+ N= 4 R= 32: A 2.192649e-07  [9.065004e-08 5.303592e-07] h -4.088 [-4.396 -3.781]
+ N= 8 R= 16: A 1.526886e-07  [4.419299e-09 5.275453e-06] h -4.120 [-5.185 -3.055]
+ N= 1 R= 64: A 7.259786e-06  [5.09252e-06 1.034939e-05] h -3.530 [-3.737 -3.322]
+ N= 2 R= 32: A 3.378133e-06  [1.982138e-06 5.757309e-06] h -3.759 [-4.002 -3.516]
+ N= 4 R= 16: A 4.141133e-07  [1.813414e-07 9.456737e-07] h -4.461 [-4.774 -4.148]
+ N= 1 R= 32: A 2.958256e-05  [1.401812e-05 6.242832e-05] h -3.520 [-4.009 -3.031]
+ N= 2 R= 16: A 1.77435e-05  [1.378062e-06 0.0002284598] h -3.621 [-4.929 -2.312]
+ N= 1 R= 16: A 5.106118e-05  [4.161766e-06 0.0006264754] h -4.197 [-6.162 -2.233]
+diag oppsign
+ N= 1 R=128: A 1.481107e-06  [1.188833e-06 1.845235e-06] h -3.776 [-3.896 -3.656]
+ N= 2 R= 64: A 6.161044e-07  [4.188333e-07 9.062907e-07] h -4.052 [-4.215 -3.889]
+ N= 4 R= 32: A 1.249759e-07  [4.853998e-08 3.217756e-07] h -4.538 [-4.868 -4.209]
+ N= 8 R= 16: A 1.410415e-07  [3.816331e-09 5.212518e-06] h -4.442 [-5.527 -3.357]
+ N= 1 R= 64: A 5.002084e-06  [3.156794e-06 7.926028e-06] h -3.983 [-4.252 -3.713]
+ N= 2 R= 32: A 1.062318e-06  [3.82077e-07 2.953641e-06] h -4.558 [-5.025 -4.092]
+ N= 4 R= 16: A 5.760871e-08  [4.390463e-09 7.55903e-07] h -5.581 [-6.557 -4.606]
+ N= 1 R= 32: A 1.414643e-05  [6.413106e-06 3.120507e-05] h -4.368 [-4.886 -3.850]
+ N= 2 R= 16: A 1.327404e-06  [2.205976e-08 7.987399e-05] h -5.415 [-7.513 -3.316]
+ N= 1 R= 16: A 4.030189e-05  [1.058654e-05 0.0001534252] h -5.042 [-6.090 -3.995]
+all
+ N= 1 R=128: A 1.972987e-06  [1.923583e-06 2.02366e-06] h -3.587 [-3.606 -3.569]
+ N= 2 R= 64: A 1.323536e-06  [1.235252e-06 1.41813e-06] h -3.623 [-3.657 -3.590]
+ N= 4 R= 32: A 3.67788e-07  [2.8427e-07 4.758435e-07] h -4.029 [-4.124 -3.933]
+ N= 8 R= 16: A 4.652316e-07  [1.468715e-07 1.473672e-06] h -3.887 [-4.234 -3.540]
+ N= 1 R= 64: A 8.042277e-06  [7.683889e-06 8.41738e-06] h -3.567 [-3.600 -3.534]
+ N= 2 R= 32: A 4.451916e-06  [3.855499e-06 5.140595e-06] h -3.689 [-3.761 -3.618]
+ N= 4 R= 16: A 4.777624e-07  [2.395535e-07 9.528432e-07] h -4.462 [-4.724 -4.200]
+ N= 1 R= 32: A 2.521308e-05  [2.319437e-05 2.74075e-05] h -3.737 [-3.799 -3.675]
+ N= 2 R= 16: A 8.647551e-06  [6.18944e-06 1.208189e-05] h -4.097 [-4.269 -3.926]
+ N= 1 R= 16: A 6.848102e-05  [5.896277e-05 7.953579e-05] h -4.125 [-4.243 -4.008]
+diary off

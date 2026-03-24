@@ -1,0 +1,65 @@
+clear
+load ffdm_btc_calc_gen_12Oct22.mat
+close all
+ffdm_btc_plot_gen
+     0     0
+Enter scale for plotting average btc stats (0 to autoscale, [-0.05 0.05] suggested for fixed scale) (range: -1.000000 to 1.000000):
+     0     0
+Enter scale for plotting standard dev of btc stats (0 to autoscale, [0 0.2] suggested for fixed scale) (range: 0.000000 to 1.000000):
+Enter error bar, as multiple of sem (0 for none) (range: 0.000000 to 4.000000, default= 2.000000):
+Only one view, or no L<->R reorganization of views.  Averages across views will only be calculated based on native coordinates.
+Enter 1 to plot 'all views' (redundant if there is only one view) (range: 0 to 1, default= 0):
+ order  1->        eLife:   Hermundstad and Xu data files  [gcbdevwtua]
+ order  2->           HX:   Hermundstad and Xu plot order  [ cbdevwtua]
+ order  3->           JV:          Victor et al. standard  [gbcdetuvwa]
+Enter choice (range: 1 to 3):2
+  1-> N(downsampling)= 1 R= 64 NR=  64
+  2-> N(downsampling)= 2 R= 32 NR=  64
+  3-> N(downsampling)= 4 R= 16 NR=  64
+  4-> N(downsampling)= 1 R=128 NR= 128
+  5-> N(downsampling)= 2 R= 64 NR= 128
+  6-> N(downsampling)= 4 R= 32 NR= 128
+analysis parameters in previously-analyzed datasets:
+  src      label        dataset  nsets       N(uncorr)         R         NR(uncorr)       N(corr)        NR(corr)
+  2    ffdm_unmod      ffdm_unmod   21      1 to   32     16 to  512     16 to  512      1 to   32     16 to  512
+  3    ffdm_mlis       ffdm_mlis    15      1 to   16     16 to  256     16 to  256      2 to   32     32 to  512
+  4    usic            usic         15      1 to   16     16 to  256     16 to  256      1 to   16     16 to  256
+  5    mrix            mrix_adni     6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  5    mrix            mrix_oasis    6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  5    mrix            mrix_hv       6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  5    mrix            mrix_patient  6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  6    nistats         nistats      18      1 to   20     32 to  128     32 to  640      1 to   20     32 to  640
+  7    upmc_imgs       upmc_imgs     6      1 to   32     16 to  512    512 to  512      1 to   32    512 to  512
+  8    upmc_nvms       upmc_nvms     6      1 to   32     16 to  512    512 to  512      1 to   32    512 to  512
+  9    nibs            nibs         15      1 to   16     16 to  256     16 to  256      1 to   16     16 to  256
+available analysis parameters in this dataset
+                                  set        N(uncorr)         R         NR(uncorr)       N(corr)        NR(corr)
+                                   1->          1             64             64              1             64    
+                                   2->          2             32             64              2             64    
+                                   3->          4             16             64              4             64    
+                                   4->          1            128            128              1            128    
+                                   5->          2             64            128              2            128    
+                                   6->          4             32            128              4            128    
+Enter 1 to enter set choices directly, 2 for intersection of analyzed datasets, 3 for union of analyzed datsets (range: 1 to 3):1
+Enter one or more choices of sets (range: 1 to 6):[1:6]
+chosen analysis parameters from this dataset
+                                  set        N(uncorr)         R         NR(uncorr)       N(corr)        NR(corr)
+                                   1->          1             64             64              1             64    
+                                   2->          2             32             64              2             64    
+                                   3->          4             16             64              4             64    
+                                   4->          1            128            128              1            128    
+                                   5->          2             64            128              2            128    
+                                   6->          4             32            128              4            128    
+Enter 1 if ok (range: 0 to 1, default= 1):1
+1->     nrplot (             default view in ffdm_nrplot [az el]=[-30.00  15.00])
+2->     nrline (        view down a line of constant N*R [az el]=[ 40.00  10.00])
+3->    topdown (          top-down view onto (N,R) plane [az el]=[  0.00  90.00])
+4->     matlab (                 matlab standard 3D view [az el]=[-37.50  30.00])
+Enter choice (range: 1 to 4):2
+ trace  1: iNR=  1, (N,R)=( 1, 64), color(rgb) is =[0.167 1.000 0.167]
+ trace  2: iNR=  2, (N,R)=( 2, 32), color(rgb) is =[0.333 0.750 0.750]
+ trace  3: iNR=  3, (N,R)=( 4, 16), color(rgb) is =[0.500 0.500 1.000]
+ trace  4: iNR=  4, (N,R)=( 1,128), color(rgb) is =[0.000 1.000 0.000]
+ trace  5: iNR=  5, (N,R)=( 2, 64), color(rgb) is =[0.167 0.750 0.750]
+ trace  6: iNR=  6, (N,R)=( 4, 32), color(rgb) is =[0.333 0.333 1.000]
+diary off

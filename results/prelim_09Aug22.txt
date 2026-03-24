@@ -1,0 +1,225 @@
+%prelim calculation of binary texture stats for scintigraphy
+date
+ans =
+    '09-Aug-2022'
+clear
+bone_btc_demo
+Enter bone database file name (default= bonedatabase.xlsx):scindatabase.xlsx
+database has  22 entries and a header row
+    'Site'    'Original Image name'    'Width'    'Height'    'how many ROI?'    'Bone type'
+Requested entry is from     MEDPIX, image synpic17844.jpg, size is   722(h) x   738(w);   2 ROIs, type: Full body
+ full image (height, width) is   722 x   738
+...
+...
+Requested entry is from     MEDPIX, image  synpic8517.jpg, size is   800(h) x   600(w);   1 ROIs, type: Pelvic region to legs
+ full image (height, width) is   800 x   600
+size agrees with database entry
+ image values range from   0.000 to 222.000
+ roi  1:  (height,width) is   745 x   449
+minimum roi size, minimum power-of-2:    66    64
+Enter bigpatch size, should be power of 2 (range: 32 to 1024, default= 64):128
+     0     1     2     3
+Enter values of blocking (log 2(N)) (range: 0 to 3):[0 1 0 1]
+     7     7     7     7
+Enter values of patch size in pixels (log 2(NR)) (range: 2 to 7):[7 7 6 6]
+analysis parameters so far:
+  1-> blocking (N) =   1    blocks per patch edge (R) = 128    patch size (NR)= 128
+  2-> blocking (N) =   2    blocks per patch edge (R) =  64    patch size (NR)= 128
+  3-> blocking (N) =   1    blocks per patch edge (R) =  64    patch size (NR)=  64
+  4-> blocking (N) =   2    blocks per patch edge (R) =  32    patch size (NR)=  64
+Enter 1 if ok (range: 0 to 1):1
+minimum patch size:   64
+Enter 1 to exclude constant patches (range: 0 to 1, default= 1):1
+Enter patch size to use for excluding (range: 4 to 128, default= 64):
+ working on roi   1 [ 681 x  165], from original image   1
+ inspected    5 bigpatches from roi   1
+ working on roi   2 [ 645 x  164], from original image   1
+ inspected    5 bigpatches from roi   2
+...
+...
+ inspected    4 bigpatches from roi  71
+ working on roi  72 [ 745 x  449], from original image  22
+ inspected   15 bigpatches from roi  72
+ made a total of   270 bigpatches,     0 bigpatches excluded
+Enter 1 for frozen random numbers, 0 for new random numbers each time (range: 0 to 1):1
+Enter window type (0 for none, 1 for cosbell) (range: 0 to 1, default= 1):1
+Enter padding factor for Fourier Transform (power of 2, 1 for no padding) (range: 1 to 8, default= 2):
+Enter margin size for calculating binary texture statistics (range: 0 to 15, default= 1):
+Enter list of bigpatches to show pipeline (0 for none, can be array) (range: 0 to 270):0
+doing analysis  1-> blocking (N) =   1    blocks per patch edge (R) = 128    patch size (NR)= 128
+ creating   270 patches of size 128 from   270  bigpatches of size 128
+doing analysis  2-> blocking (N) =   2    blocks per patch edge (R) =  64    patch size (NR)= 128
+ creating   270 patches of size 128 from   270  bigpatches of size 128
+doing analysis  3-> blocking (N) =   1    blocks per patch edge (R) =  64    patch size (NR)=  64
+ creating  1080 patches of size  64 from   270  bigpatches of size 128
+doing analysis  4-> blocking (N) =   2    blocks per patch edge (R) =  32    patch size (NR)=  64
+ creating  1080 patches of size  64 from   270  bigpatches of size 128
+done.
+clear patch_fft patches_binarized patches_blockcounts patches_downsampled patches_whitened roi_data_all patches windowed im_data_all
+clear big*
+save scint_btc_prelim
+clear
+bone_btc_plot
+Enter data path (default= ./):Enter data dir within path (default= ./):Enter file containing data (default= bone_standard.mat):scint_btc_prelim
+     0     0
+Enter scale for plotting average btc stats (0 to autoscale, [-0.05 0.05] suggested for fixed scale) (range: -1.000000 to 1.000000):
+     0     0
+Enter scale for plotting standard dev of btc stats (0 to autoscale, [0 0.2] suggested for fixed scale) (range: 0.000000 to 1.000000):
+Enter error bar, as multiple of sem (0 for none) (range: 0.000000 to 4.000000, default= 2.000000):
+Only one view, or no L<->R reorganization of views.  Averages across views will only be calculated based on native coordinates.
+Enter 1 to plot 'all views' (redundant if there is only one view) (range: 0 to 1, default= 0):
+ order  1->        eLife:   Hermundstad and Xu data files  [gcbdevwtua]
+ order  2->           HX:   Hermundstad and Xu plot order  [ cbdevwtua]
+ order  3->           JV:          Victor et al. standard  [gbcdetuvwa]
+Enter choice (range: 1 to 3):2
+  1-> N(downsampling)= 1 R=128 NR= 128
+  2-> N(downsampling)= 2 R= 64 NR= 128
+  3-> N(downsampling)= 1 R= 64 NR=  64
+  4-> N(downsampling)= 2 R= 32 NR=  64
+analysis parameters in previously-analyzed datasets:
+  src      label        dataset  nsets       N(uncorr)         R         NR(uncorr)       N(corr)        NR(corr)
+  2    ffdm_unmod      ffdm_unmod   21      1 to   32     16 to  512     16 to  512      1 to   32     16 to  512
+  3    ffdm_mlis       ffdm_mlis    15      1 to   16     16 to  256     16 to  256      2 to   32     32 to  512
+  4    usic            usic         15      1 to   16     16 to  256     16 to  256      1 to   16     16 to  256
+  5    mrix            mrix_adni     6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  5    mrix            mrix_oasis    6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  5    mrix            mrix_hv       6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  5    mrix            mrix_patient  6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  6    nistats         nistats      18      1 to   20     32 to  128     32 to  640      1 to   20     32 to  640
+  7    upmc_imgs       upmc_imgs     6      1 to   32     16 to  512    512 to  512      1 to   32    512 to  512
+  8    upmc_nvms       upmc_nvms     6      1 to   32     16 to  512    512 to  512      1 to   32    512 to  512
+  9    nibs            nibs         15      1 to   16     16 to  256     16 to  256      1 to   16     16 to  256
+available analysis parameters in this dataset
+                                  set        N(uncorr)         R         NR(uncorr)       N(corr)        NR(corr)
+                                   1->          1            128            128              1            128    
+                                   2->          2             64            128              2            128    
+                                   3->          1             64             64              1             64    
+                                   4->          2             32             64              2             64    
+Enter 1 to enter set choices directly, 2 for intersection of analyzed datasets, 3 for union of analyzed datsets (range: 1 to 3):1
+Enter one or more choices of sets (range: 1 to 4):1
+chosen analysis parameters from this dataset
+                                  set        N(uncorr)         R         NR(uncorr)       N(corr)        NR(corr)
+                                   1->          1            128            128              1            128    
+Enter 1 if ok (range: 0 to 1, default= 1):1
+1->     nrplot (             default view in ffdm_nrplot [az el]=[-30.00  15.00])
+2->     nrline (        view down a line of constant N*R [az el]=[ 40.00  10.00])
+3->    topdown (          top-down view onto (N,R) plane [az el]=[  0.00  90.00])
+4->     matlab (                 matlab standard 3D view [az el]=[-37.50  30.00])
+Enter choice (range: 1 to 4):2
+ trace  1: iNR=  1, (N,R)=( 1,128), color(rgb) is =[0.500 1.000 0.500]
+clear
+
+clear
+ffdm_btc_plot_nistats
+Enter dropbox path (default= ../../../Dropbox):../../../../Dropbox
+Enter dropbox dir (default= /Textures/RawNIstats/ImagePatchStats):/Textures/RawNIstats/ImagePatchStats/data
+Enter file containing NI data (default= NIstats.mat):NIstats = 
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+      N: [1 1 1 1 1 2 2 2 2 4 4 4 4 8 8 12 16 20]
+      R: [128 32 48 64 80 32 48 64 80 32 48 64 80 32 48 32 32 32]
+    set: [1×18 struct]
+     0     0
+Enter scale for plotting average btc stats (0 to autoscale, [-0.05 0.05] suggested for fixed scale) (range: -1.000000 to 1.000000):
+     0     0
+Enter scale for plotting standard dev of btc stats (0 to autoscale, [0 0.2] suggested for fixed scale) (range: 0.000000 to 1.000000):
+Enter error bar, as multiple of sem (0 for none) (range: 0.000000 to 4.000000, default= 2.000000):
+Only one view, or no L<->R reorganization of views.  Averages across views will only be calculated based on native coordinates.
+Enter 1 to plot 'all views' (redundant if there is only one view) (range: 0 to 1, default= 0):
+ order  1->        eLife:   Hermundstad and Xu data files  [gcbdevwtua]
+ order  2->           HX:   Hermundstad and Xu plot order  [ cbdevwtua]
+ order  3->           JV:          Victor et al. standard  [gbcdetuvwa]
+Enter choice (range: 1 to 3):2
+  1-> N(downsampling)= 1 R=128 NR= 128
+  2-> N(downsampling)= 1 R= 32 NR=  32
+  3-> N(downsampling)= 1 R= 48 NR=  48
+  4-> N(downsampling)= 1 R= 64 NR=  64
+  5-> N(downsampling)= 1 R= 80 NR=  80
+  6-> N(downsampling)= 2 R= 32 NR=  64
+  7-> N(downsampling)= 2 R= 48 NR=  96
+  8-> N(downsampling)= 2 R= 64 NR= 128
+  9-> N(downsampling)= 2 R= 80 NR= 160
+ 10-> N(downsampling)= 4 R= 32 NR= 128
+ 11-> N(downsampling)= 4 R= 48 NR= 192
+ 12-> N(downsampling)= 4 R= 64 NR= 256
+ 13-> N(downsampling)= 4 R= 80 NR= 320
+ 14-> N(downsampling)= 8 R= 32 NR= 256
+ 15-> N(downsampling)= 8 R= 48 NR= 384
+ 16-> N(downsampling)=12 R= 32 NR= 384
+ 17-> N(downsampling)=16 R= 32 NR= 512
+ 18-> N(downsampling)=20 R= 32 NR= 640
+analysis parameters in previously-analyzed datasets:
+  src      label        dataset  nsets       N(uncorr)         R         NR(uncorr)       N(corr)        NR(corr)
+  2    ffdm_unmod      ffdm_unmod   21      1 to   32     16 to  512     16 to  512      1 to   32     16 to  512
+  3    ffdm_mlis       ffdm_mlis    15      1 to   16     16 to  256     16 to  256      2 to   32     32 to  512
+  4    usic            usic         15      1 to   16     16 to  256     16 to  256      1 to   16     16 to  256
+  5    mrix            mrix_adni     6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  5    mrix            mrix_oasis    6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  5    mrix            mrix_hv       6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  5    mrix            mrix_patient  6      1 to    4     16 to   64     16 to   64      1 to    4     16 to   64
+  6    nistats         nistats      18      1 to   20     32 to  128     32 to  640      1 to   20     32 to  640
+  7    upmc_imgs       upmc_imgs     6      1 to   32     16 to  512    512 to  512      1 to   32    512 to  512
+  8    upmc_nvms       upmc_nvms     6      1 to   32     16 to  512    512 to  512      1 to   32    512 to  512
+  9    nibs            nibs         15      1 to   16     16 to  256     16 to  256      1 to   16     16 to  256
+available analysis parameters in this dataset
+                                  set        N(uncorr)         R         NR(uncorr)       N(corr)        NR(corr)
+                                   1->          1            128            128              1            128    
+                                   2->          1             32             32              1             32    
+                                   3->          1             48             48              1             48    
+                                   4->          1             64             64              1             64    
+                                   5->          1             80             80              1             80    
+                                   6->          2             32             64              2             64    
+                                   7->          2             48             96              2             96    
+                                   8->          2             64            128              2            128    
+                                   9->          2             80            160              2            160    
+                                  10->          4             32            128              4            128    
+                                  11->          4             48            192              4            192    
+                                  12->          4             64            256              4            256    
+                                  13->          4             80            320              4            320    
+                                  14->          8             32            256              8            256    
+                                  15->          8             48            384              8            384    
+                                  16->         12             32            384             12            384    
+                                  17->         16             32            512             16            512    
+                                  18->         20             32            640             20            640    
+Enter 1 to enter set choices directly, 2 for intersection of analyzed datasets, 3 for union of analyzed datsets (range: 1 to 3):1
+Enter one or more choices of sets (range: 1 to 18):1
+chosen analysis parameters from this dataset
+                                  set        N(uncorr)         R         NR(uncorr)       N(corr)        NR(corr)
+                                   1->          1            128            128              1            128    
+Enter 1 if ok (range: 0 to 1, default= 1):1
+1->     nrplot (             default view in ffdm_nrplot [az el]=[-30.00  15.00])
+2->     nrline (        view down a line of constant N*R [az el]=[ 40.00  10.00])
+3->    topdown (          top-down view onto (N,R) plane [az el]=[  0.00  90.00])
+4->     matlab (                 matlab standard 3D view [az el]=[-37.50  30.00])
+Enter choice (range: 1 to 4):2
+ trace  1: iNR=  1, (N,R)=( 1,128), color(rgb) is =[0.500 1.000 0.500]
+get(gca,'YLim')
+ans =
+   -0.0090    0.1843
+get(gca,'YLim')
+ans =
+   -0.0090    0.1843
+get(gca,'YLim')
+ans =
+   -0.0094    0.1551
+get(gca,'YLim')
+ans =
+   -0.0138    0.1068
+set(gca,'YLim',[-.02 .2]);
+set(gca,'YLim',[-.02 .2]);
+set(gca,'YLim',[-.02 .2]);
+get(gca,'YLim')
+ans =
+    0.0062    0.2081
+
+get(gca,'YLim')
+ans =
+    0.0042    0.1913
+get(gca,'YLim')
+ans =
+    0.0029    0.1527
+set(gca,'YLim',[0 .21]);
+
+set(gca,'YLim',[0 .21]);
+set(gca,'YLim',[0 .21]);
+diary off

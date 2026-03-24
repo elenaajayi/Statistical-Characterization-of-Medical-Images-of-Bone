@@ -1,0 +1,419 @@
+ffdm_btc_calc_gen
+ 1 ->  ffdm data from pilot ffdm dataset, region selection flag 0
+ 2 ->  ffdm data from full ffdm dataset for acmd, unprocessed, region selection flag 0
+ 3 ->  ffdm data from subset of ffdm dataset for acmd, after mlis processing, region selection flag 0
+ 4 ->  usic data from carotid ultrasound, region selection flag 0
+ 5 ->  mrix data from brain MRI (T1: ADNI, T1: OASIS, T2: TNS HV and Patients), region selection flag 0
+ 6 ->  nimg data from Penn Natural Image Database, region selection flag 0
+ 9 ->  nibs data from Berkeley Img Dbase, boundary parsing, region selection flag 1
+10 ->  bxrs data from bone xray or scintigram, region selection flag 0
+Enter choice (range: 1 to 10):10
+Enter 1 to clear large arrays after use (range: 0 to 1, default= 1):
+Enter -1 for fixed randomization, 0 for full randomization, 1 for none (range: -1 to 1, default= 0):-1
+Enter 1 to plot pipeline (range: 0 to 1, default= 0):
+Enter 1 to plot spectra (range: 0 to 1, default= 0):
+Enter 1 to plot spectra anisotropy details (range: 0 to 1, default= 0):
+setup 1: bone radiographs from MedPix database, file name bonedatabase.xlsx
+setup 2: bone radiographs from MedPix database, interiors only, file name bonedatabasesubroi.xlsx
+setup 3: scintigraphy from MedPix database, file name scindatabase.xlsx
+Enter choice (range: 1 to 3):1
+Read bxrs data:  50 entries with    67 separate ROI files
+minimum roi size, minimum power-of-2:    77    64
+loaded bonedatabase with 50 subjects (files  1 to 50) and  1 views ( 1->std to  1->std)
+all view names
+    'std'
+Options for determining whitening spectra
+1->per subj and view
+2->per view (patch wtd)
+3->per view (subj wtd)
+4->global (patch wtd)
+5->global (subj wtd)
+6->per patch
+7->none
+8->power law
+Enter choice (range: 1 to 8, default= 3):
+Enter pad factor (range: 1 to 8, default= 1):
+Enter 1 to subtract pixel mean (range: 0 to 1, default= 0):
+Enter 1 to subtract ROI mean (range: 0 to 1, default= 1):
+Enter 1 or 2 for cosine bell window (1: den=R-1, 2: den=R) (range: 0 to 2, default= 1):
+Minimum roi size in files:  175 x   77 (i.e., all subjects and all views have an ROI this size or larger)
+Enter minimum roi size to require (log 2(NR)) (range: 6 to 12, default= 6):7
+     0     1     2     3
+Enter values of blocking (log 2(N)) (range: 0 to 3):[0 1 2 0 1 2]
+     7     7     7     7     7     7
+Enter values of ROI size in pixels (log 2(NR)) (range: 2 to 7):[6 6 6 7 7 7]
+analysis parameters so far:
+  1-> blocking (N) =   1    blocks per patch edge (R) =  64    patch size (NR)=  64
+  2-> blocking (N) =   2    blocks per patch edge (R) =  32    patch size (NR)=  64
+  3-> blocking (N) =   4    blocks per patch edge (R) =  16    patch size (NR)=  64
+  4-> blocking (N) =   1    blocks per patch edge (R) = 128    patch size (NR)= 128
+  5-> blocking (N) =   2    blocks per patch edge (R) =  64    patch size (NR)= 128
+  6-> blocking (N) =   4    blocks per patch edge (R) =  32    patch size (NR)= 128
+     0     0     0     0     0     0
+Enter scales for calculating image statistics (log2(S), must be less than correpsponding values of R/4) (range: 0 to 7):
+     0     0     0     0     0     0
+Enter 1 to step the starting phase for scaling (range: 0 to 1):
+analysis parameters including scaling, maximum total patch size (N*R)=  128
+  1-> blocking (N) =   1    blocks per patch edge (R) =  64    patch size (NR)=  64   scale for btc statistics, in blocks(S)=   1 step phase:  
+  2-> blocking (N) =   2    blocks per patch edge (R) =  32    patch size (NR)=  64   scale for btc statistics, in blocks(S)=   1 step phase:  
+  3-> blocking (N) =   4    blocks per patch edge (R) =  16    patch size (NR)=  64   scale for btc statistics, in blocks(S)=   1 step phase:  
+  4-> blocking (N) =   1    blocks per patch edge (R) = 128    patch size (NR)= 128   scale for btc statistics, in blocks(S)=   1 step phase:  
+  5-> blocking (N) =   2    blocks per patch edge (R) =  64    patch size (NR)= 128   scale for btc statistics, in blocks(S)=   1 step phase:  
+  6-> blocking (N) =   4    blocks per patch edge (R) =  32    patch size (NR)= 128   scale for btc statistics, in blocks(S)=   1 step phase:  
+Enter 1 if ok (range: 0 to 1):1
+     0     1     2     0     1     2
+Enter values of blocking (log 2) for detailed spectra, -1 for none (range: -1 to 2):
+Enter margin size for calculating binary texture statistics (range: 0 to 7, default= 1):
+There are    0 to   60 patches of size  128 x  128 pixels per image, total of   1392 patches
+Enter 1/(fraction of patches to use) (1: use all) (range: 1.000000 to 60.000000, default= 1.000000):
+Enter maximum number of big patches per image to use (range: 1 to 60, default= 60):
+Enter confidence limit probability (0 for none) (range: 0.000000 to 0.999990, default= 0.950000):
+Enter 1 to exclude patches with constant subpatches (range: 0 to 1, default= 1):
+Enter size of subpatch (log 2) (range: 4 to 7, default= 4):
+   1392 big patches available in images,    342 excluded as constant,   1050 big patches made (1/patches_usefrac=  1, max patches per image =   60)
+view 1 (       std): 1050 big patches to be used in   49 subjects
+Extracted 1050 big patches of size  128 x  128
+ pipeline example  1: isubj   1 iview   1 examp numb (patch)   1 roi   1
+ pipeline example  2: isubj  50 iview   1 examp numb (patch)  10 roi   3
+downsampling for N=  1 R= 64
+doing fft's for 4200 patches of size   64 x   64 with pad factor 1
+whitening 4200 patches of size   64 x   64 using average type per view (subj wtd) for whitening and binarizing blocks of   1 x   1, stepping 0
+calculating block counts for 4200 patches of size   64 x   64 ( 1 x  1 downsampled), margin 1, derived from 1050 big patches of size  128 x  128 pixels
+bonedatabase
+downsampling for N=  2 R= 32
+doing fft's for 4200 patches of size   32 x   32 with pad factor 1
+whitening 4200 patches of size   32 x   32 using average type per view (subj wtd) for whitening and binarizing blocks of   1 x   1, stepping 0
+calculating block counts for 4200 patches of size   32 x   32 ( 2 x  2 downsampled), margin 1, derived from 1050 big patches of size  128 x  128 pixels
+bonedatabase
+downsampling for N=  4 R= 16
+doing fft's for 4200 patches of size   16 x   16 with pad factor 1
+whitening 4200 patches of size   16 x   16 using average type per view (subj wtd) for whitening and binarizing blocks of   1 x   1, stepping 0
+calculating block counts for 4200 patches of size   16 x   16 ( 4 x  4 downsampled), margin 1, derived from 1050 big patches of size  128 x  128 pixels
+bonedatabase
+downsampling for N=  1 R=128
+doing fft's for 1050 patches of size  128 x  128 with pad factor 1
+whitening 1050 patches of size  128 x  128 using average type per view (subj wtd) for whitening and binarizing blocks of   1 x   1, stepping 0
+calculating block counts for 1050 patches of size  128 x  128 ( 1 x  1 downsampled), margin 1, derived from 1050 big patches of size  128 x  128 pixels
+bonedatabase
+downsampling for N=  2 R= 64
+doing fft's for 1050 patches of size   64 x   64 with pad factor 1
+whitening 1050 patches of size   64 x   64 using average type per view (subj wtd) for whitening and binarizing blocks of   1 x   1, stepping 0
+calculating block counts for 1050 patches of size   64 x   64 ( 2 x  2 downsampled), margin 1, derived from 1050 big patches of size  128 x  128 pixels
+bonedatabase
+downsampling for N=  4 R= 32
+doing fft's for 1050 patches of size   32 x   32 with pad factor 1
+whitening 1050 patches of size   32 x   32 using average type per view (subj wtd) for whitening and binarizing blocks of   1 x   1, stepping 0
+calculating block counts for 1050 patches of size   32 x   32 ( 4 x  4 downsampled), margin 1, derived from 1050 big patches of size  128 x  128 pixels
+bonedatabase
+ iNR=  1, [N,R,S]=[  1    64   1], view  1 region type  1 (n/a)
+    number of contributing  patches:  4200 of  4200 (this view) and  4200 total
+    number of contributing subjects:    49 of    49 (this view) and    50 total
+    estimated standard deviation based on counting errors for per-patch stats: 0.01639 (without region masking: 0.01639)
+    estimated standard deviation based on counting errors for per-subj  stats: 0.00228 (without region masking: 0.00228)
+ iNR=  2, [N,R,S]=[  2    32   1], view  1 region type  1 (n/a)
+    number of contributing  patches:  4200 of  4200 (this view) and  4200 total
+    number of contributing subjects:    49 of    49 (this view) and    50 total
+    estimated standard deviation based on counting errors for per-patch stats: 0.03448 (without region masking: 0.03448)
+    estimated standard deviation based on counting errors for per-subj  stats: 0.00479 (without region masking: 0.00479)
+ iNR=  3, [N,R,S]=[  4    16   1], view  1 region type  1 (n/a)
+    number of contributing  patches:  4200 of  4200 (this view) and  4200 total
+    number of contributing subjects:    49 of    49 (this view) and    50 total
+    estimated standard deviation based on counting errors for per-patch stats: 0.07692 (without region masking: 0.07692)
+    estimated standard deviation based on counting errors for per-subj  stats: 0.01068 (without region masking: 0.01068)
+ iNR=  4, [N,R,S]=[  1   128   1], view  1 region type  1 (n/a)
+    number of contributing  patches:  1050 of  1050 (this view) and  1050 total
+    number of contributing subjects:    49 of    49 (this view) and    50 total
+    estimated standard deviation based on counting errors for per-patch stats: 0.00800 (without region masking: 0.00800)
+    estimated standard deviation based on counting errors for per-subj  stats: 0.00222 (without region masking: 0.00222)
+ iNR=  5, [N,R,S]=[  2    64   1], view  1 region type  1 (n/a)
+    number of contributing  patches:  1050 of  1050 (this view) and  1050 total
+    number of contributing subjects:    49 of    49 (this view) and    50 total
+    estimated standard deviation based on counting errors for per-patch stats: 0.01639 (without region masking: 0.01639)
+    estimated standard deviation based on counting errors for per-subj  stats: 0.00455 (without region masking: 0.00455)
+ iNR=  6, [N,R,S]=[  4    32   1], view  1 region type  1 (n/a)
+    number of contributing  patches:  1050 of  1050 (this view) and  1050 total
+    number of contributing subjects:    49 of    49 (this view) and    50 total
+    estimated standard deviation based on counting errors for per-patch stats: 0.03448 (without region masking: 0.03448)
+    estimated standard deviation based on counting errors for per-subj  stats: 0.00957 (without region masking: 0.00957)
+ 
+bonedatabase, NR_max=128 pad=1 whiten=per view (subj wtd) margin=1 gen usefrac=1 Frozen randomization
+ 
+bonedatabase, NR_max=128 pad=1 whiten=per view (subj wtd) margin=1 gen usefrac=1 Frozen randomization
+Image statistics calculated with weighting per patch; sems and CLs (0.95000) by subject -based jackknife
+texture coordinate averages
+ view   std
+  N  R   S       g       b       c       d       e       t       u       v       w       a
+ from   4200 examples:
+  1  64  1 -0.0002  0.0886  0.0742  0.1286  0.1200  0.0018  0.0019  0.0017  0.0021  0.1549 
+  jk_sem    0.0002  0.0118  0.0095  0.0096  0.0102  0.0004  0.0004  0.0006  0.0005  0.0057
+   cl_lo   -0.0007  0.0650  0.0552  0.1094  0.0996  0.0010  0.0010  0.0005  0.0012  0.1435
+   cl_hi    0.0002  0.1123  0.0933  0.1479  0.1404  0.0026  0.0028  0.0028  0.0031  0.1663
+ from   4200 examples:
+  2  32  1 -0.0027  0.1125  0.0876  0.0468  0.0483  0.0046  0.0025  0.0037  0.0035  0.1155 
+  jk_sem    0.0007  0.0141  0.0160  0.0078  0.0088  0.0007  0.0007  0.0007  0.0008  0.0061
+   cl_lo   -0.0041  0.0841  0.0556  0.0312  0.0306  0.0032  0.0011  0.0024  0.0018  0.1033
+   cl_hi   -0.0013  0.1409  0.1197  0.0625  0.0660  0.0059  0.0039  0.0050  0.0051  0.1277
+ from   4200 examples:
+  4  16  1 -0.0110 -0.0003 -0.0168  0.0170  0.0437 -0.0039 -0.0036 -0.0047 -0.0033  0.0898 
+  jk_sem    0.0017  0.0128  0.0154  0.0068  0.0065  0.0017  0.0016  0.0016  0.0018  0.0054
+   cl_lo   -0.0144 -0.0259 -0.0477  0.0034  0.0306 -0.0073 -0.0068 -0.0079 -0.0069  0.0790
+   cl_hi   -0.0076  0.0254  0.0141  0.0306  0.0567 -0.0004 -0.0005 -0.0016  0.0004  0.1006
+ from   1050 examples:
+  1 128  1 -0.0004  0.0668  0.0657  0.0928  0.0952  0.0004  0.0002  0.0006  0.0004  0.1237 
+  jk_sem    0.0001  0.0118  0.0095  0.0096  0.0100  0.0003  0.0004  0.0005  0.0004  0.0046
+   cl_lo   -0.0007  0.0430  0.0466  0.0735  0.0751 -0.0003 -0.0006 -0.0004 -0.0005  0.1145
+   cl_hi   -0.0001  0.0906  0.0849  0.1121  0.1152  0.0011  0.0011  0.0016  0.0013  0.1329
+ from   1050 examples:
+  2  64  1 -0.0016  0.1060  0.1110  0.0431  0.0534  0.0043  0.0028  0.0037  0.0035  0.1106 
+  jk_sem    0.0004  0.0145  0.0163  0.0079  0.0092  0.0004  0.0007  0.0007  0.0007  0.0065
+   cl_lo   -0.0025  0.0769  0.0783  0.0272  0.0349  0.0034  0.0014  0.0023  0.0021  0.0975
+   cl_hi   -0.0008  0.1351  0.1436  0.0590  0.0719  0.0052  0.0042  0.0051  0.0049  0.1236
+ from   1050 examples:
+  4  32  1 -0.0059  0.0295  0.0617  0.0563  0.0765  0.0067  0.0071  0.0031  0.0052  0.0933 
+  jk_sem    0.0012  0.0130  0.0158  0.0090  0.0088  0.0018  0.0012  0.0018  0.0016  0.0069
+   cl_lo   -0.0083  0.0034  0.0300  0.0382  0.0588  0.0030  0.0047 -0.0005  0.0020  0.0795
+   cl_hi   -0.0035  0.0556  0.0934  0.0744  0.0942  0.0103  0.0095  0.0067  0.0083  0.1071
+ average across all views
+  N  R   S       g       b       c       d       e       t       u       v       w       a
+ from   4200 examples
+  1  64  1 -0.0002  0.0886  0.0742  0.1286  0.1200  0.0018  0.0019  0.0017  0.0021  0.1549 
+  jk_sem    0.0002  0.0118  0.0095  0.0096  0.0102  0.0004  0.0004  0.0006  0.0005  0.0057
+   cl_lo   -0.0007  0.0650  0.0552  0.1094  0.0996  0.0010  0.0010  0.0005  0.0012  0.1435
+   cl_hi    0.0002  0.1123  0.0933  0.1479  0.1404  0.0026  0.0028  0.0028  0.0031  0.1663
+ from   4200 examples
+  2  32  1 -0.0027  0.1125  0.0876  0.0468  0.0483  0.0046  0.0025  0.0037  0.0035  0.1155 
+  jk_sem    0.0007  0.0141  0.0160  0.0078  0.0088  0.0007  0.0007  0.0007  0.0008  0.0061
+   cl_lo   -0.0041  0.0841  0.0556  0.0312  0.0306  0.0032  0.0011  0.0024  0.0018  0.1033
+   cl_hi   -0.0013  0.1409  0.1197  0.0625  0.0660  0.0059  0.0039  0.0050  0.0051  0.1277
+ from   4200 examples
+  4  16  1 -0.0110 -0.0003 -0.0168  0.0170  0.0437 -0.0039 -0.0036 -0.0047 -0.0033  0.0898 
+  jk_sem    0.0017  0.0128  0.0154  0.0068  0.0065  0.0017  0.0016  0.0016  0.0018  0.0054
+   cl_lo   -0.0144 -0.0259 -0.0477  0.0034  0.0306 -0.0073 -0.0068 -0.0079 -0.0069  0.0790
+   cl_hi   -0.0076  0.0254  0.0141  0.0306  0.0567 -0.0004 -0.0005 -0.0016  0.0004  0.1006
+ from   1050 examples
+  1 128  1 -0.0004  0.0668  0.0657  0.0928  0.0952  0.0004  0.0002  0.0006  0.0004  0.1237 
+  jk_sem    0.0001  0.0118  0.0095  0.0096  0.0100  0.0003  0.0004  0.0005  0.0004  0.0046
+   cl_lo   -0.0007  0.0430  0.0466  0.0735  0.0751 -0.0003 -0.0006 -0.0004 -0.0005  0.1145
+   cl_hi   -0.0001  0.0906  0.0849  0.1121  0.1152  0.0011  0.0011  0.0016  0.0013  0.1329
+ from   1050 examples
+  2  64  1 -0.0016  0.1060  0.1110  0.0431  0.0534  0.0043  0.0028  0.0037  0.0035  0.1106 
+  jk_sem    0.0004  0.0145  0.0163  0.0079  0.0092  0.0004  0.0007  0.0007  0.0007  0.0065
+   cl_lo   -0.0025  0.0769  0.0783  0.0272  0.0349  0.0034  0.0014  0.0023  0.0021  0.0975
+   cl_hi   -0.0008  0.1351  0.1436  0.0590  0.0719  0.0052  0.0042  0.0051  0.0049  0.1236
+ from   1050 examples
+  4  32  1 -0.0059  0.0295  0.0617  0.0563  0.0765  0.0067  0.0071  0.0031  0.0052  0.0933 
+  jk_sem    0.0012  0.0130  0.0158  0.0090  0.0088  0.0018  0.0012  0.0018  0.0016  0.0069
+   cl_lo   -0.0083  0.0034  0.0300  0.0382  0.0588  0.0030  0.0047 -0.0005  0.0020  0.0795
+   cl_hi   -0.0035  0.0556  0.0934  0.0744  0.0942  0.0103  0.0095  0.0067  0.0083  0.1071
+texture coordinate standard devs
+ view   std
+  N  R   S       g       b       c       d       e       t       u       v       w       a
+ from   4200 examples
+  1  64  1  0.0081  0.1284  0.1266  0.0899  0.0925  0.0195  0.0194  0.0193  0.0197  0.0649 
+  jk_sem    0.0002  0.0064  0.0057  0.0047  0.0050  0.0004  0.0004  0.0005  0.0004  0.0045
+   cl_lo    0.0077  0.1156  0.1153  0.0805  0.0825  0.0186  0.0186  0.0184  0.0189  0.0558
+   cl_hi    0.0086  0.1413  0.1380  0.0993  0.1025  0.0204  0.0202  0.0203  0.0205  0.0739
+expected contribution to standard dev based on counting errors within patches:  0.0164 (patches have  3721 counts)
+ from   4200 examples
+  2  32  1  0.0238  0.1407  0.1665  0.1107  0.1126  0.0372  0.0368  0.0371  0.0373  0.0793 
+  jk_sem    0.0009  0.0070  0.0072  0.0049  0.0044  0.0007  0.0005  0.0006  0.0005  0.0045
+   cl_lo    0.0219  0.1267  0.1520  0.1009  0.1038  0.0359  0.0358  0.0359  0.0363  0.0702
+   cl_hi    0.0257  0.1547  0.1810  0.1204  0.1214  0.0386  0.0378  0.0383  0.0384  0.0883
+expected contribution to standard dev based on counting errors within patches:  0.0345 (patches have   841 counts)
+ from   4200 examples
+  4  16  1  0.0674  0.1719  0.2143  0.1317  0.1363  0.0840  0.0855  0.0857  0.0861  0.1127 
+  jk_sem    0.0028  0.0057  0.0073  0.0043  0.0038  0.0018  0.0016  0.0019  0.0014  0.0044
+   cl_lo    0.0618  0.1604  0.1996  0.1231  0.1287  0.0804  0.0823  0.0820  0.0832  0.1039
+   cl_hi    0.0730  0.1833  0.2290  0.1403  0.1439  0.0877  0.0888  0.0895  0.0890  0.1215
+expected contribution to standard dev based on counting errors within patches:  0.0769 (patches have   169 counts)
+ from   1050 examples
+  1 128  1  0.0029  0.1098  0.1036  0.0756  0.0765  0.0107  0.0105  0.0102  0.0101  0.0450 
+  jk_sem    0.0001  0.0075  0.0053  0.0050  0.0053  0.0005  0.0004  0.0004  0.0003  0.0041
+   cl_lo    0.0027  0.0947  0.0930  0.0655  0.0660  0.0098  0.0096  0.0095  0.0095  0.0368
+   cl_hi    0.0031  0.1250  0.1141  0.0857  0.0871  0.0116  0.0113  0.0110  0.0107  0.0533
+expected contribution to standard dev based on counting errors within patches:  0.0080 (patches have 15625 counts)
+ from   1050 examples
+  2  64  1  0.0084  0.1219  0.1460  0.0928  0.0929  0.0188  0.0186  0.0193  0.0187  0.0645 
+  jk_sem    0.0003  0.0073  0.0079  0.0059  0.0045  0.0005  0.0005  0.0005  0.0005  0.0046
+   cl_lo    0.0077  0.1072  0.1301  0.0810  0.0838  0.0177  0.0176  0.0182  0.0176  0.0552
+   cl_hi    0.0091  0.1365  0.1619  0.1047  0.1020  0.0198  0.0196  0.0203  0.0197  0.0737
+expected contribution to standard dev based on counting errors within patches:  0.0164 (patches have  3721 counts)
+ from   1050 examples
+  4  32  1  0.0239  0.1385  0.1744  0.1187  0.1121  0.0386  0.0383  0.0398  0.0404  0.0788 
+  jk_sem    0.0009  0.0070  0.0084  0.0070  0.0062  0.0008  0.0010  0.0009  0.0010  0.0068
+   cl_lo    0.0220  0.1244  0.1575  0.1046  0.0996  0.0369  0.0362  0.0380  0.0384  0.0651
+   cl_hi    0.0258  0.1527  0.1914  0.1328  0.1246  0.0403  0.0404  0.0415  0.0425  0.0925
+expected contribution to standard dev based on counting errors within patches:  0.0345 (patches have   841 counts)
+ standard dev across all views
+  N  R   S       g       b       c       d       e       t       u       v       w       a
+ from   4200 examples
+  1  64  1  0.0081  0.1284  0.1266  0.0899  0.0925  0.0195  0.0194  0.0193  0.0197  0.0649 
+  jk_sem    0.0002  0.0064  0.0057  0.0047  0.0050  0.0004  0.0004  0.0005  0.0004  0.0045
+   cl_lo    0.0077  0.1156  0.1153  0.0805  0.0825  0.0186  0.0186  0.0184  0.0189  0.0558
+   cl_hi    0.0086  0.1413  0.1380  0.0993  0.1025  0.0204  0.0202  0.0203  0.0205  0.0739
+ from   4200 examples
+  2  32  1  0.0238  0.1407  0.1665  0.1107  0.1126  0.0372  0.0368  0.0371  0.0373  0.0793 
+  jk_sem    0.0009  0.0070  0.0072  0.0049  0.0044  0.0007  0.0005  0.0006  0.0005  0.0045
+   cl_lo    0.0219  0.1267  0.1520  0.1009  0.1038  0.0359  0.0358  0.0359  0.0363  0.0702
+   cl_hi    0.0257  0.1547  0.1810  0.1204  0.1214  0.0386  0.0378  0.0383  0.0384  0.0883
+ from   4200 examples
+  4  16  1  0.0674  0.1719  0.2143  0.1317  0.1363  0.0840  0.0855  0.0857  0.0861  0.1127 
+  jk_sem    0.0028  0.0057  0.0073  0.0043  0.0038  0.0018  0.0016  0.0019  0.0014  0.0044
+   cl_lo    0.0618  0.1604  0.1996  0.1231  0.1287  0.0804  0.0823  0.0820  0.0832  0.1039
+   cl_hi    0.0730  0.1833  0.2290  0.1403  0.1439  0.0877  0.0888  0.0895  0.0890  0.1215
+ from   1050 examples
+  1 128  1  0.0029  0.1098  0.1036  0.0756  0.0765  0.0107  0.0105  0.0102  0.0101  0.0450 
+  jk_sem    0.0001  0.0075  0.0053  0.0050  0.0053  0.0005  0.0004  0.0004  0.0003  0.0041
+   cl_lo    0.0027  0.0947  0.0930  0.0655  0.0660  0.0098  0.0096  0.0095  0.0095  0.0368
+   cl_hi    0.0031  0.1250  0.1141  0.0857  0.0871  0.0116  0.0113  0.0110  0.0107  0.0533
+ from   1050 examples
+  2  64  1  0.0084  0.1219  0.1460  0.0928  0.0929  0.0188  0.0186  0.0193  0.0187  0.0645 
+  jk_sem    0.0003  0.0073  0.0079  0.0059  0.0045  0.0005  0.0005  0.0005  0.0005  0.0046
+   cl_lo    0.0077  0.1072  0.1301  0.0810  0.0838  0.0177  0.0176  0.0182  0.0176  0.0552
+   cl_hi    0.0091  0.1365  0.1619  0.1047  0.1020  0.0198  0.0196  0.0203  0.0197  0.0737
+ from   1050 examples
+  4  32  1  0.0239  0.1385  0.1744  0.1187  0.1121  0.0386  0.0383  0.0398  0.0404  0.0788 
+  jk_sem    0.0009  0.0070  0.0084  0.0070  0.0062  0.0008  0.0010  0.0009  0.0010  0.0068
+   cl_lo    0.0220  0.1244  0.1575  0.1046  0.0996  0.0369  0.0362  0.0380  0.0384  0.0651
+   cl_hi    0.0258  0.1527  0.1914  0.1328  0.1246  0.0403  0.0404  0.0415  0.0425  0.0925
+ 
+bonedatabase, NR_max=128 pad=1 whiten=per view (subj wtd) margin=1 gen usefrac=1 Frozen randomization
+Image statistics calculated with weighting per subj; sems and CLs (0.95000) by subject -based jackknife
+texture coordinate averages
+ view   std
+  N  R   S       g       b       c       d       e       t       u       v       w       a
+ from     49 examples:
+  1  64  1 -0.0003  0.0914  0.0877  0.1266  0.1180  0.0019  0.0023  0.0016  0.0021  0.1628 
+  jk_sem    0.0002  0.0109  0.0099  0.0091  0.0093  0.0005  0.0005  0.0006  0.0005  0.0059
+   cl_lo   -0.0007  0.0695  0.0678  0.1084  0.0993  0.0009  0.0013  0.0004  0.0011  0.1510
+   cl_hi    0.0001  0.1133  0.1077  0.1448  0.1366  0.0028  0.0033  0.0029  0.0031  0.1746
+ from     49 examples:
+  2  32  1 -0.0028  0.1117  0.1002  0.0565  0.0583  0.0049  0.0033  0.0048  0.0046  0.1223 
+  jk_sem    0.0006  0.0133  0.0163  0.0083  0.0077  0.0009  0.0008  0.0008  0.0009  0.0060
+   cl_lo   -0.0041  0.0850  0.0675  0.0399  0.0427  0.0031  0.0017  0.0031  0.0027  0.1103
+   cl_hi   -0.0015  0.1383  0.1330  0.0731  0.0738  0.0068  0.0050  0.0065  0.0064  0.1342
+ from     49 examples:
+  4  16  1 -0.0116  0.0106  0.0076  0.0231  0.0521 -0.0030 -0.0027 -0.0039 -0.0025  0.0937 
+  jk_sem    0.0020  0.0125  0.0163  0.0082  0.0070  0.0021  0.0023  0.0023  0.0025  0.0064
+   cl_lo   -0.0156 -0.0145 -0.0251  0.0066  0.0380 -0.0073 -0.0074 -0.0085 -0.0074  0.0809
+   cl_hi   -0.0075  0.0357  0.0402  0.0395  0.0663  0.0012  0.0019  0.0008  0.0025  0.1065
+ from     49 examples:
+  1 128  1 -0.0006  0.0666  0.0781  0.0884  0.0901  0.0003  0.0005  0.0008  0.0003  0.1296 
+  jk_sem    0.0002  0.0110  0.0102  0.0088  0.0089  0.0004  0.0004  0.0005  0.0004  0.0047
+   cl_lo   -0.0009  0.0445  0.0577  0.0707  0.0722 -0.0005 -0.0003 -0.0003 -0.0005  0.1203
+   cl_hi   -0.0002  0.0888  0.0985  0.1062  0.1079  0.0011  0.0013  0.0019  0.0012  0.1389
+ from     49 examples:
+  2  64  1 -0.0017  0.1015  0.1206  0.0502  0.0600  0.0046  0.0027  0.0039  0.0041  0.1153 
+  jk_sem    0.0004  0.0134  0.0161  0.0089  0.0085  0.0006  0.0008  0.0008  0.0007  0.0066
+   cl_lo   -0.0025  0.0746  0.0882  0.0324  0.0430  0.0035  0.0012  0.0023  0.0026  0.1020
+   cl_hi   -0.0009  0.1284  0.1531  0.0680  0.0770  0.0058  0.0043  0.0055  0.0055  0.1286
+ from     49 examples:
+  4  32  1 -0.0049  0.0357  0.0815  0.0608  0.0819  0.0061  0.0074  0.0043  0.0066  0.1010 
+  jk_sem    0.0012  0.0128  0.0163  0.0106  0.0101  0.0017  0.0015  0.0019  0.0017  0.0079
+   cl_lo   -0.0072  0.0099  0.0487  0.0395  0.0616  0.0027  0.0044  0.0005  0.0032  0.0851
+   cl_hi   -0.0025  0.0615  0.1143  0.0821  0.1022  0.0095  0.0104  0.0082  0.0100  0.1170
+ average across all views
+  N  R   S       g       b       c       d       e       t       u       v       w       a
+ from     49 examples
+  1  64  1 -0.0003  0.0914  0.0877  0.1266  0.1180  0.0019  0.0023  0.0016  0.0021  0.1628 
+  jk_sem    0.0002  0.0109  0.0099  0.0091  0.0093  0.0005  0.0005  0.0006  0.0005  0.0059
+   cl_lo   -0.0007  0.0695  0.0678  0.1084  0.0993  0.0009  0.0013  0.0004  0.0011  0.1510
+   cl_hi    0.0001  0.1133  0.1077  0.1448  0.1366  0.0028  0.0033  0.0029  0.0031  0.1746
+ from     49 examples
+  2  32  1 -0.0028  0.1117  0.1002  0.0565  0.0583  0.0049  0.0033  0.0048  0.0046  0.1223 
+  jk_sem    0.0006  0.0133  0.0163  0.0083  0.0077  0.0009  0.0008  0.0008  0.0009  0.0060
+   cl_lo   -0.0041  0.0850  0.0675  0.0399  0.0427  0.0031  0.0017  0.0031  0.0027  0.1103
+   cl_hi   -0.0015  0.1383  0.1330  0.0731  0.0738  0.0068  0.0050  0.0065  0.0064  0.1342
+ from     49 examples
+  4  16  1 -0.0116  0.0106  0.0076  0.0231  0.0521 -0.0030 -0.0027 -0.0039 -0.0025  0.0937 
+  jk_sem    0.0020  0.0125  0.0163  0.0082  0.0070  0.0021  0.0023  0.0023  0.0025  0.0064
+   cl_lo   -0.0156 -0.0145 -0.0251  0.0066  0.0380 -0.0073 -0.0074 -0.0085 -0.0074  0.0809
+   cl_hi   -0.0075  0.0357  0.0402  0.0395  0.0663  0.0012  0.0019  0.0008  0.0025  0.1065
+ from     49 examples
+  1 128  1 -0.0006  0.0666  0.0781  0.0884  0.0901  0.0003  0.0005  0.0008  0.0003  0.1296 
+  jk_sem    0.0002  0.0110  0.0102  0.0088  0.0089  0.0004  0.0004  0.0005  0.0004  0.0047
+   cl_lo   -0.0009  0.0445  0.0577  0.0707  0.0722 -0.0005 -0.0003 -0.0003 -0.0005  0.1203
+   cl_hi   -0.0002  0.0888  0.0985  0.1062  0.1079  0.0011  0.0013  0.0019  0.0012  0.1389
+ from     49 examples
+  2  64  1 -0.0017  0.1015  0.1206  0.0502  0.0600  0.0046  0.0027  0.0039  0.0041  0.1153 
+  jk_sem    0.0004  0.0134  0.0161  0.0089  0.0085  0.0006  0.0008  0.0008  0.0007  0.0066
+   cl_lo   -0.0025  0.0746  0.0882  0.0324  0.0430  0.0035  0.0012  0.0023  0.0026  0.1020
+   cl_hi   -0.0009  0.1284  0.1531  0.0680  0.0770  0.0058  0.0043  0.0055  0.0055  0.1286
+ from     49 examples
+  4  32  1 -0.0049  0.0357  0.0815  0.0608  0.0819  0.0061  0.0074  0.0043  0.0066  0.1010 
+  jk_sem    0.0012  0.0128  0.0163  0.0106  0.0101  0.0017  0.0015  0.0019  0.0017  0.0079
+   cl_lo   -0.0072  0.0099  0.0487  0.0395  0.0616  0.0027  0.0044  0.0005  0.0032  0.0851
+   cl_hi   -0.0025  0.0615  0.1143  0.0821  0.1022  0.0095  0.0104  0.0082  0.0100  0.1170
+texture coordinate standard devs
+ view   std
+  N  R   S       g       b       c       d       e       t       u       v       w       a
+ from     49 examples
+  1  64  1  0.0014  0.0765  0.0696  0.0634  0.0651  0.0032  0.0034  0.0043  0.0035  0.0410 
+  jk_sem    0.0002  0.0101  0.0066  0.0078  0.0077  0.0004  0.0005  0.0007  0.0005  0.0052
+   cl_lo    0.0011  0.0562  0.0564  0.0478  0.0497  0.0024  0.0025  0.0029  0.0026  0.0305
+   cl_hi    0.0017  0.0968  0.0828  0.0789  0.0805  0.0041  0.0043  0.0057  0.0045  0.0515
+expected contribution to standard dev based on counting errors within patches:  0.0023 (patches have  3721 counts)
+ from     49 examples
+  2  32  1  0.0045  0.0929  0.1141  0.0579  0.0541  0.0063  0.0057  0.0059  0.0064  0.0417 
+  jk_sem    0.0005  0.0088  0.0109  0.0109  0.0041  0.0008  0.0006  0.0007  0.0008  0.0045
+   cl_lo    0.0035  0.0752  0.0923  0.0360  0.0458  0.0048  0.0044  0.0045  0.0048  0.0327
+   cl_hi    0.0055  0.1105  0.1360  0.0797  0.0624  0.0079  0.0069  0.0074  0.0079  0.0507
+expected contribution to standard dev based on counting errors within patches:  0.0048 (patches have   841 counts)
+ from     49 examples
+  4  16  1  0.0141  0.0874  0.1138  0.0574  0.0493  0.0148  0.0162  0.0163  0.0172  0.0446 
+  jk_sem    0.0014  0.0072  0.0113  0.0158  0.0125  0.0017  0.0020  0.0025  0.0023  0.0057
+   cl_lo    0.0112  0.0731  0.0911  0.0257  0.0242  0.0113  0.0120  0.0113  0.0125  0.0331
+   cl_hi    0.0170  0.1018  0.1365  0.0892  0.0744  0.0182  0.0203  0.0213  0.0218  0.0561
+expected contribution to standard dev based on counting errors within patches:  0.0107 (patches have   169 counts)
+ from     49 examples
+  1 128  1  0.0012  0.0772  0.0711  0.0618  0.0623  0.0029  0.0028  0.0038  0.0029  0.0326 
+  jk_sem    0.0004  0.0105  0.0072  0.0069  0.0068  0.0003  0.0004  0.0006  0.0003  0.0044
+   cl_lo    0.0004  0.0561  0.0567  0.0480  0.0486  0.0024  0.0019  0.0027  0.0023  0.0238
+   cl_hi    0.0020  0.0982  0.0855  0.0757  0.0759  0.0034  0.0037  0.0050  0.0036  0.0413
+expected contribution to standard dev based on counting errors within patches:  0.0022 (patches have 15625 counts)
+ from     49 examples
+  2  64  1  0.0028  0.0937  0.1130  0.0621  0.0592  0.0041  0.0054  0.0055  0.0050  0.0464 
+  jk_sem    0.0002  0.0084  0.0108  0.0127  0.0059  0.0004  0.0005  0.0008  0.0005  0.0049
+   cl_lo    0.0024  0.0769  0.0913  0.0366  0.0473  0.0032  0.0043  0.0039  0.0040  0.0365
+   cl_hi    0.0033  0.1105  0.1346  0.0876  0.0711  0.0049  0.0065  0.0072  0.0060  0.0563
+expected contribution to standard dev based on counting errors within patches:  0.0046 (patches have  3721 counts)
+ from     49 examples
+  4  32  1  0.0081  0.0899  0.1143  0.0741  0.0708  0.0120  0.0104  0.0134  0.0119  0.0556 
+  jk_sem    0.0006  0.0099  0.0122  0.0156  0.0151  0.0013  0.0015  0.0017  0.0012  0.0092
+   cl_lo    0.0068  0.0700  0.0898  0.0427  0.0404  0.0094  0.0073  0.0099  0.0095  0.0370
+   cl_hi    0.0094  0.1099  0.1388  0.1055  0.1012  0.0146  0.0135  0.0168  0.0143  0.0741
+expected contribution to standard dev based on counting errors within patches:  0.0096 (patches have   841 counts)
+ standard dev across all views
+  N  R   S       g       b       c       d       e       t       u       v       w       a
+ from     49 examples
+  1  64  1  0.0014  0.0765  0.0696  0.0634  0.0651  0.0032  0.0034  0.0043  0.0035  0.0410 
+  jk_sem    0.0002  0.0101  0.0066  0.0078  0.0077  0.0004  0.0005  0.0007  0.0005  0.0052
+   cl_lo    0.0011  0.0562  0.0564  0.0478  0.0497  0.0024  0.0025  0.0029  0.0026  0.0305
+   cl_hi    0.0017  0.0968  0.0828  0.0789  0.0805  0.0041  0.0043  0.0057  0.0045  0.0515
+ from     49 examples
+  2  32  1  0.0045  0.0929  0.1141  0.0579  0.0541  0.0063  0.0057  0.0059  0.0064  0.0417 
+  jk_sem    0.0005  0.0088  0.0109  0.0109  0.0041  0.0008  0.0006  0.0007  0.0008  0.0045
+   cl_lo    0.0035  0.0752  0.0923  0.0360  0.0458  0.0048  0.0044  0.0045  0.0048  0.0327
+   cl_hi    0.0055  0.1105  0.1360  0.0797  0.0624  0.0079  0.0069  0.0074  0.0079  0.0507
+ from     49 examples
+  4  16  1  0.0141  0.0874  0.1138  0.0574  0.0493  0.0148  0.0162  0.0163  0.0172  0.0446 
+  jk_sem    0.0014  0.0072  0.0113  0.0158  0.0125  0.0017  0.0020  0.0025  0.0023  0.0057
+   cl_lo    0.0112  0.0731  0.0911  0.0257  0.0242  0.0113  0.0120  0.0113  0.0125  0.0331
+   cl_hi    0.0170  0.1018  0.1365  0.0892  0.0744  0.0182  0.0203  0.0213  0.0218  0.0561
+ from     49 examples
+  1 128  1  0.0012  0.0772  0.0711  0.0618  0.0623  0.0029  0.0028  0.0038  0.0029  0.0326 
+  jk_sem    0.0004  0.0105  0.0072  0.0069  0.0068  0.0003  0.0004  0.0006  0.0003  0.0044
+   cl_lo    0.0004  0.0561  0.0567  0.0480  0.0486  0.0024  0.0019  0.0027  0.0023  0.0238
+   cl_hi    0.0020  0.0982  0.0855  0.0757  0.0759  0.0034  0.0037  0.0050  0.0036  0.0413
+ from     49 examples
+  2  64  1  0.0028  0.0937  0.1130  0.0621  0.0592  0.0041  0.0054  0.0055  0.0050  0.0464 
+  jk_sem    0.0002  0.0084  0.0108  0.0127  0.0059  0.0004  0.0005  0.0008  0.0005  0.0049
+   cl_lo    0.0024  0.0769  0.0913  0.0366  0.0473  0.0032  0.0043  0.0039  0.0040  0.0365
+   cl_hi    0.0033  0.1105  0.1346  0.0876  0.0711  0.0049  0.0065  0.0072  0.0060  0.0563
+ from     49 examples
+  4  32  1  0.0081  0.0899  0.1143  0.0741  0.0708  0.0120  0.0104  0.0134  0.0119  0.0556 
+  jk_sem    0.0006  0.0099  0.0122  0.0156  0.0151  0.0013  0.0015  0.0017  0.0012  0.0092
+   cl_lo    0.0068  0.0700  0.0898  0.0427  0.0404  0.0094  0.0073  0.0099  0.0095  0.0370
+   cl_hi    0.0094  0.1099  0.1388  0.1055  0.1012  0.0146  0.0135  0.0168  0.0143  0.0741
+save ffdm_btc_calc_gen_12Oct22.mat
+diary off

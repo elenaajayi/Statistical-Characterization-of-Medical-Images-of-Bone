@@ -1,0 +1,5 @@
+slope for                horiz:  -3.559 confidence limit: [ -3.614  -3.503]
+slope for                 vert:  -3.197 confidence limit: [ -3.259  -3.134]
+slope for        diag samesign:  -3.343 confidence limit: [ -3.455  -3.231]
+slope for         diag oppsign:  -3.365 confidence limit: [ -3.482  -3.248]
+slope for                  all:  -3.499 confidence limit: [ -3.511  -3.487]

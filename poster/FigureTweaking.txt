@@ -1,0 +1,69 @@
+To set a standard size for the figure window and a single plot inside – make sure that the plot is selected, and then:
+set(gcf,'Position',[50 150 1200 850])
+set(gca,'Position',[.1 .1 .75 .75])
+
+The four entries are x and y coordinates of lower left corner, then horiz size then vertical size
+Gcf is for the figure position. Entries are in units of screen pixels
+Gca is for the plot position within the figure, entries are in units of “fraction of window size”
+(This is to be done after the tweaks below)
+
+
+To get an idea of appropriate values for gcf, open up a matlab figure and then execute get(gcf,’Position’)
+
+To tweak the labels on the spectral-slope wireframe plot, like scin_slopesbyaxis_persubj_30jan2023.fig:
+(mean and std, subject-weighted, separately)
+set(gca,'ZTick',[1:6],'FontSize',14)
+xlabel('N','FontSize',18)
+ylabel('R','FontSize',18)
+zlabel('spectral slope','FontSize',18)
+
+To tweak the labels on a power spectrum heatmap, like scin_spec_n2_r64_30jan2023.fig:
+set(gca,'XTickLabel',[-0.25 0 .25],'FontSize',14)
+set(gca,'XTickLabel',[-0.25 0 .25],'FontSize',14)
+set(gca,'CLim',[-3 2.5]);
+xlabel('cycles per pixel')
+ylabel('cycles per pixel')
+set(gcf,'Position',[50 150 1200 850])
+set(gca,'Position',[.1 .1 .75 .75])
+colorbar
+
+To tweak the labels on a power spectrum dotplot
+xlabel('cycles per pixel','FontSize',14)
+ylabel('power','FontSize',14);
+set(gca,'YLim',[10^-3 10^2.5]);
+set(gcf,'Position',[50 150 1200 850])
+set(gca,'Position',[.1 .1 .57 .85])
+
+To tweak the texture statistics wireframe plot, like scin_btc_bc_de_tuvw_a_30jan2023.fig (separately for mean and std dev):
+set(gca,'FontSize',14)
+xlabel('N','FontSize',18)
+ylabel('R','FontSize',18)
+
+To tweak *bc_de_tuvw_a or *bcde, legends and position together
+set(gca,'FontSize',14)
+xlabel('N','FontSize',18)
+ylabel('R','FontSize',18)
+set(gcf,'Position',[50 150 1200 850])
+set(gca,'Position',[.1 .1 .75 .75])
+
+Z Scales for btc statistics for bone and scint:
+mean: set(gca,'ZLim',[-.1 .2])
+stdv: set(gca,'ZLim',[0 0.35])
+
+Natural images: power spectra have very different scales
+To tweak the labels on a power spectrum heatmap
+set(gca,'XTickLabel',[-0.25 0 .25],'FontSize',14)
+set(gca,'XTickLabel',[-0.25 0 .25],'FontSize',14)
+set(gca,'CLim',[-8 -2.5]);
+xlabel('cycles per pixel')
+ylabel('cycles per pixel')
+set(gcf,'Position',[50 150 1200 850])
+set(gca,'Position',[.1 .1 .75 .75])
+colorbar
+
+To tweak the labels on a power spectrum dotplot
+xlabel('cycles per pixel','FontSize',14)
+ylabel('power','FontSize',14);
+set(gca,'YLim',[10^-8 10^-2.5]);
+set(gcf,'Position',[50 150 1200 850])
+set(gca,'Position',[.1 .1 .57 .85])
