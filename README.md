@@ -1,6 +1,6 @@
 # Statistical Characterization of Medical Images of Bone
 
-Research conducted at the **Feil Family Brain & Mind Research Institute, Weill Cornell Medicine** (Jun 2022 — May 2023), under the supervision of [**Dr. Jonathan Victor**](https://github.com/jvlab) ([Lab Page](http://www-users.med.cornell.edu/~jdvicto/labshots.html)).
+Research conducted at the **Feil Family Brain & Mind Research Institute, Weill Cornell Medicine** (Jun 2022 - May 2023), under the supervision of [**Dr. Jonathan Victor**](https://github.com/jvlab) ([Lab Page](http://www-users.med.cornell.edu/~jdvicto/labshots.html)).
 
 ## Overview
 
